@@ -160,6 +160,8 @@ It currently has an advantage over NGINX in that it can terminate both TCP and H
 
 The API server should be run with TLS disabled. Edit the `argocd-server` deployment to add the `--insecure` flag to the argocd-server command.
 
+!!! note Before editing the deployment with the `--insecure` flag, make sure to either update the default password (`argocd-server` pod name), or note the current pod name. Editing the deployment will cause the pod to restart and be given a new hash, but the password will still be the initial pod name.
+
 ```yaml
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
